@@ -1,0 +1,30 @@
+{
+    "name": "isaac-sim",
+    "dockerFile": "Dockerfile",
+    // "image": "nvcr.io/nvidia/isaac-sim:4.2.0",
+    "runArgs": [
+        "--entrypoint", "bash",
+        "-it",
+        "--runtime=nvidia",
+        "--gpus", "all",
+        "-e", "ACCEPT_EULA=Y",
+        "--rm",
+        "--network=host",
+        "-e", "PRIVACY_CONSENT=Y",
+        "-e", "DISPLAY=${localEnv:DISPLAY}",
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/cache/ov:/root/.cache/ov:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/cache/pip:/root/.cache/pip:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/data:/root/.local/share/ov/data:rw",
+        "-v", "${localWorkspaceFolder}/volume/isaac-sim/documents:/root/Documents:rw",
+        "-v", "${localWorkspaceFolder}/volume/workspace:/workspace:rw", // Added volume mapping for workspace
+        "-e", "OMNI_ASSET_ROOT=http://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/4.0" // for asset server
+    
+    ],
+
+    "workspaceFolder": "/workspace"
+}
