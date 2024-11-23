@@ -5,7 +5,8 @@ This repository contains the development container configuration for Isaac Sim.
 ## Features
 
 - Pre-configured environment for Isaac Sim development.
-- Includes all necessary dependencies and tools.
+- Includes all necessary dependencies and tools including ROS2-Humble.
+- Volume mounted `/workspace` directory for your local development files.
 - Easy to set up and use.
 
 
@@ -13,7 +14,7 @@ This repository contains the development container configuration for Isaac Sim.
 
 To get started with the development container, follow these steps:
 
-1. Make sure you have installed NVIDIA Driver running `nvidia-smi`. If not Install it;
+1. **Install NVIDIA Driver:** Make sure you have installed NVIDIA Driver running `nvidia-smi`. If not Install it;
     ```bash
     sudo apt-get update
     sudo apt install build-essential -y
@@ -37,7 +38,7 @@ To get started with the development container, follow these steps:
     docker run hello-world
     ```
 
-3. Install NVIDIA Docker Toolkit:
+3. **Install NVIDIA Docker Toolkit:**
     ```bash
     # Configure the repository
     curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
@@ -59,7 +60,7 @@ To get started with the development container, follow these steps:
     docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
     ```
 
-3. **Pull the Isaac Sim Docker Image**:
+4. **Pull the Isaac Sim Docker Image**:
 
     To pull the Isaac Sim Docker image, you need to authenticate with the NVIDIA container registry. Follow these steps:
 
@@ -86,12 +87,18 @@ To get started with the development container, follow these steps:
         docker pull nvcr.io/nvidia/isaac-sim:4.2.0
         ```
 
-4. **Clone the Repository**:
+5. **Clone the Repository**:
     ```sh
     git clone https://github.com/NDHANA94/isaac_sim_devcontainer.git
     cd isaac_sim_devcontainer/
     ```
-5. **Open in VS Code**: 
+
+6. **Setup `as.desktop` to grant access to local Docker container for GUI aaplications:**
+    You can simply run `xhost +local:docker` or setup the desktop icon provided to grant access to container to use host display for GUI as following.
+    - Copy and past `dsa.desktop` desktop icon to your Desktop.
+    - Right click on it and then click on `Allow Launching`.
+    - Now double clicking on this icon you can grant access to local container to run GUI applications on host display.
+7. **Open in VS Code**: 
 
     - Open Visual Studio Code. 
     - Install the **Remote - Containers** extension from the Extensions view (if not already installed).
@@ -102,7 +109,111 @@ To get started with the development container, follow these steps:
         - Type `Remote-Containers: Reopen in Container` and select it.
         - VS Code will then reopen the folder inside the development container.
 
-6. **Build the Container**: The container will start building automatically. This might take a few minutes.
+8. **Build the Container**: The container will start building automatically. This might take a few minutes.
+
+
+</br></br>
+
+
+## Executable Files in the `/isaac_sim` Directory:
+
+The `/isaac_sim` directory in the Docker container contains several executable scripts that help you manage, configure, and run Isaac Sim in various modes. Here is a brief overview of these scripts and how to use them:
+
+### Overview of Executable Scripts
+
+- **`clear_caches.sh`**: Clears caches used by Isaac Sim to free up space and ensure fresh data.
+  
+
+- **`isaac-sim.docker.gui.sh`**: Runs Isaac Sim with a graphical user interface (GUI) in a Docker container.
+  
+
+- **`isaac-sim.docker.sh`**: Runs Isaac Sim in a Docker container without a GUI.
+
+
+- **`isaac-sim.fabric.sh`**: Related to Isaac Sim fabric, which may involve fabric simulation or configuration.
+
+
+- **`isaac-sim.headless.native.sh`**: Runs Isaac Sim in headless mode natively on the host machine without a GUI.
+
+
+- **`isaac-sim.headless.webrtc.sh`**: Runs Isaac Sim in headless mode with WebRTC support for remote visualization.
+
+
+- **`isaac-sim.selector.sh`**: Selects and runs different configurations of Isaac Sim.
+ 
+
+- **`isaac-sim.sh`**: Main script to run Isaac Sim. This is typically the entry point for starting the simulation.
+
+
+- **`jupyter_notebook.sh`**: Starts a Jupyter Notebook server, useful for running Python notebooks with Isaac Sim.
+
+
+- **`omni.isaac.sim.post.install.run.sh`**: Runs post-installation tasks for Isaac Sim, ensuring everything is set up correctly.
+
+
+- **`omni.isaac.sim.post.install.sh`**: Post-installation script for Isaac Sim, typically run once after installation.
+
+
+- **`omni.isaac.sim.warmup.sh`**: Warms up Isaac Sim, possibly by preloading assets or initializing systems.
+
+
+- **`privacy.sh`**: Related to privacy settings, possibly for configuring data collection preferences.
+
+
+- **`pull_kit_sdk.sh`**: Pulls the Kit SDK, which may be required for certain development tasks.
+
+
+- **`python.sh`**: Runs Python with the Isaac Sim environment, ensuring all necessary dependencies are loaded.
+
+
+- **`run_all_benchmarks.sh`**: Runs all benchmarks for Isaac Sim, useful for performance testing.
+
+
+- **`run_all_tests.sh`**: Runs all tests for Isaac Sim, ensuring the system is functioning correctly.
+
+
+- **`runapp.sh`**: Runs an Isaac Sim application, possibly a specific simulation or demo.
+
+
+- **`runheadless.native.sh`**: Runs Isaac Sim in headless mode natively on the host machine without a GUI.
+
+
+- **`runheadless.webrtc.sh`**: Runs Isaac Sim in headless mode with WebRTC support for remote visualization.
+
+
+- **`setup_conda_env.sh`**: Sets up a Conda environment for Isaac Sim, useful for managing dependencies.
+
+
+- **`setup_python_env.sh`**: Sets up the Python environment for Isaac Sim, ensuring all necessary packages are installed.
+
+</br>
+
+### How to Use These Scripts
+
+1. **Access the Container**:
+   - Open the Docker container in VS Code or through the terminal.
+
+2. **Navigate to the `/isaac_sim` Directory**:
+   ```sh
+   cd /isaac_sim
+   ```
+
+3. **Run the Desired Script**:
+   - Make sure the script has execute permissions:
+     ```sh
+     chmod +x <script_name>.sh
+     ```
+   - Execute the script:
+     ```sh
+     ./<script_name>.sh
+     ```
+
+</br></br>
+
+
+## `/workspace` Directory with Volume mounted:
+`/workspace` directory is used as a volume mount point for your local development files. This allows you to work on your projects locally and have the changes reflected inside the container. Here’s how you can use it:
+
 
 
 
