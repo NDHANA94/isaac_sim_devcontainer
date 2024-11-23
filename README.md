@@ -2,7 +2,7 @@
 
 This repository contains the development container configuration for Isaac Sim.
 
-## Features
+## 1. Features
 
 - Pre-configured environment for Isaac Sim development.
 - Includes all necessary dependencies and tools including ROS2-Humble.
@@ -10,7 +10,7 @@ This repository contains the development container configuration for Isaac Sim.
 - Easy to set up and use.
 
 
-## Getting Started
+## 2. Getting Started
 
 To get started with the development container, follow these steps:
 
@@ -115,7 +115,7 @@ To get started with the development container, follow these steps:
 </br></br>
 
 
-## Executable Files in the `/isaac_sim` Directory:
+## 3. Executable Files in the `/isaac_sim` Directory:
 
 The `/isaac_sim` directory in the Docker container contains several executable scripts that help you manage, configure, and run Isaac Sim in various modes. Here is a brief overview of these scripts and how to use them:
 
@@ -211,7 +211,7 @@ The `/isaac_sim` directory in the Docker container contains several executable s
 </br></br>
 
 
-## `/workspace` Directory with Volume mounted:
+## 4. `/workspace` Directory with Volume mounted:
 `/workspace` directory is used as a volume mount point for your local development files. This allows you to work on your projects locally and have the changes reflected inside the container. Here’s how you can use it:
 
 
