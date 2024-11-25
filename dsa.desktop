@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Docker Display
+Exec=bash -c "xhost +local:docker && notify-send 'X11 Access Control:' 'Access granted to local Docker containers for GUI applications.'"
+Terminal=True
