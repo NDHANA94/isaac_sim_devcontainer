@@ -93,9 +93,9 @@ To get started with the development container, follow these steps:
     cd isaac_sim_devcontainer/
     ```
 
-6. **Setup `as.desktop` to grant access to local Docker container for GUI aaplications:**
+6. **Setup [`dsa.desktop`](dsa.desktop) to grant access to local Docker container for GUI aaplications:**
     You can simply run `xhost +local:docker` or setup the desktop icon provided to grant access to container to use host display for GUI as following.
-    - Copy and past `dsa.desktop` desktop icon to your Desktop.
+    - Copy and past `dsa.desktop` desktop icon to your Ubuntu Desktop.
     - Right click on it and then click on `Allow Launching`.
     - Now double clicking on this icon you can grant access to local container to run GUI applications on host display.
 7. **Open in VS Code**: 

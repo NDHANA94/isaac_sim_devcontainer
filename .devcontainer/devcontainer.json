@@ -26,5 +26,11 @@
     
     ],
 
-    "workspaceFolder": "/workspace"
+    "workspaceFolder": "/workspace",
+
+    "extensions": [
+        "ms-python.python",
+        "redhat.vscode-xml",
+        "ms-vscode.cmake-tools"
+    ]
 }
